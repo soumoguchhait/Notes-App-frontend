@@ -130,9 +130,9 @@ const Section = () => {
                 <>
                   <div className={`main-container ${selectedNoteIndex === index ? 'expanded' : 'cookieCard'}`} key={index}>
                         <div className="icon-container">
-                        <FaEye className="view-icon" onClick={() => handleShow(index)} aria-label="view note" />
-                            <FaEdit className="edit-icon" onClick={() => handleEdit(index)} aria-label="Edit note"/>
-                            <FaTrash className="delete-icon" onClick={() => handleDelete(index)} aria-label="Delete note" />
+                        <FaEye className="view-icon" title="View note" onClick={() => handleShow(index)} aria-label="view note" />
+                            <FaEdit className="edit-icon" title="Edit note" onClick={() => handleEdit(index)} aria-label="Edit note"/>
+                            <FaTrash className="delete-icon" title="Delete note" onClick={() => handleDelete(index)} aria-label="Delete note" />
                         </div>
                 <p className="cookieHeading">{item.title}</p>
                 <p className="cookieDescription">{item.info} </p>

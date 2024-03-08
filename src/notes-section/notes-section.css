@@ -35,6 +35,9 @@
     margin:10px;
  
 }
+.cookieCard:hover{
+    background:linear-gradient(to left,var(--cyan),var(--light-blue));
+}
   
   .cookieCard::before {
     width: 150px;
@@ -109,8 +112,9 @@
   }
   
   .edit-icon:hover,
-  .delete-icon:hover {
-    color: #007bff;
+  .delete-icon:hover,
+  .view-icon:hover {
+    color: var(--red);
   }
 
   .colorful-form {
