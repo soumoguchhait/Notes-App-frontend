@@ -66,10 +66,11 @@ const AddNote = () => {
             <button type="submit" className="form-submit-btn">
               Submit
             </button>
-          </form>
-          <button className="closing-button" onClick={() => navigate("/")}>
+            <button className="closing-button" onClick={() => navigate("/")}>
             Close
           </button>
+          </form>
+         
         </div>
       </>
     );

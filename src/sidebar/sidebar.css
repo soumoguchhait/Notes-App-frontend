@@ -13,8 +13,19 @@
     border-bottom: 1px solid black;
 
 }
-.addNoteBtn{
+.addNoteBtn,.LoginBtn{
     background-color: var(--cyan);
     width: 100%;
     height: 40px;
+    margin:10px 0px;
+    cursor:pointer;
 }
+.image-container{
+  border-radius: 50%;
+    width:50px;
+    height:50px;
+    background-color: red;
+    position: absolute;
+    bottom: 12px;
+}
+
