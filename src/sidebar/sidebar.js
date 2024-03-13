@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-
+import { useState,useEffect } from "react";
+import { useSelector } from "react-redux";
 const Sidebar = () => {
+    const imageUrl = useSelector((state) => state.user.image);
+   
   const data = localStorage.getItem("data");
   const obj = JSON.parse(data);
-  const imageUrl = obj?.image;
+  const [imageLink, setImageLink] = useState(obj?.image);
+  const image=imageUrl?imageUrl:imageLink;
+
+
+
+
 
   const imageStyle = {
-    background: `url(${imageUrl})`,
+    backgroundImage: `url(${image})`,
 
     backgroundSize:"cover",
     backgroundPosition: "center",
@@ -25,7 +33,7 @@ const Sidebar = () => {
           <button className="LoginBtn">Login</button>
         </Link>
         <div className="image-container" style={imageStyle}>
-          {}
+          
         </div>
       </div>
     </>

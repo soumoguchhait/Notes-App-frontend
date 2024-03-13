@@ -119,6 +119,7 @@ const Section = () => {
         <div className="main-container">
           <input
             type="search"
+            
             placeholder="Search Notes"
             className="search-bar"
             onChange={(e) => debounce(handleSearch, 300)(e.target.value)}

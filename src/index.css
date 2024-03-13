@@ -24,3 +24,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.debug {
+  position: absolute;
+  bottom: -400px;
+  right:0px;
+  background-color: red;
+}

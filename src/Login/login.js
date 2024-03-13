@@ -1,40 +1,58 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
-import "./login.css"
+import "./login.css";
 import { useNavigate } from "react-router-dom";
-const Login=()=>{
-    const [email,setEmail]=useState("");
-    const[password,setPassword]=useState("");
+import { useDispatch } from "react-redux";
 
-    const navigate = useNavigate();
-        const handleSubmit = async (e) => {
-            e.preventDefault()
-            const credentials={
-                email:email,
-                password:password
-            }
-            axios.post("http://localhost:5000/user/Login-user",credentials)
-            .then((res)=>{
-                
-            
-              console.log(res);
-              localStorage.setItem("token",res.data.token);
-              const data=JSON.stringify(res.data.user);
-              localStorage.setItem("data",data);
-              alert("logged in successfully")
-              navigate("/"); 
-        
-             
-            }).catch((error)=>{
-                // toast(error.response.data.message)
-                console.log(error)
-            })
-              
-    }
-        
-    
+import { setUserImage } from "../store/userSlice";
 
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch=useDispatch();
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     axios
+  //       .get("http://localhost:5000/user/get-user", {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         const data = JSON.stringify(res.data.user);
+  //         localStorage.setItem("data", data);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const credentials = {
+      email: email,
+      password: password,
+    };
+    axios
+      .post("http://localhost:5000/user/Login-user", credentials)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const data = JSON.stringify(res.data.user);
+        localStorage.setItem("data", data);
+        console.log(res.data.user.image)
+        dispatch(setUserImage(res.data.user.image));
+        alert("logged in successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        alert(error);
+        console.log(error);
+      });
+  };
     return(
         <>
         <form className="login-form" >

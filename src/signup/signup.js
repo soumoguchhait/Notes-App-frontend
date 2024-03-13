@@ -1,7 +1,7 @@
 import "./signup.css";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -94,14 +94,16 @@ console.log(file);
             ></input>
           </div>
           <div className="form-group">
-          <input type="file"  name="uploaded_file"  onChange={onSelectFile} />
+          <input type="file" className="upload-file" name="uploaded_file"  onChange={onSelectFile} />
           </div>
           <button className="form-submit-btn" type="submit">
             Sign Up
           </button>
+          <Link to="/">
           <button className="closing-button" type="button">
             close
           </button>
+          </Link>
         </form>
       </div>
     </>
